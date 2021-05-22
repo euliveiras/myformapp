@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid HSL(218, 27%, 88%);
+    border-radius: 5px;
+
+    height: 12%;
+    width: 70%;
+    
+    color: var(--grayish-blue)
+}
+
+.container input {
+    margin-left: 3%;
+    border: 0;
+
+    background: transparent;
+
+}
+
+.onFocus {
+    color: var(--green);
+    border-color: var(--green);
+}
