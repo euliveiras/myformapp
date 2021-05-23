@@ -24,3 +24,8 @@
     color: var(--green);
     border-color: var(--green);
 }
+
+.inputError{
+    color: red;
+    border-color: red;
+}

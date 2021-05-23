@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.container span {
+    background-color: var(--bgColor);
+
+    padding: 5px;
+    border-radius: 2px;
+}
+
+
+.arrowDown {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+
+  border-top: 20px solid var(--bgColor);
+}
+
+.toolTipHidden{
+    visibility: hidden;
+}
