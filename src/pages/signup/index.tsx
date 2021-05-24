@@ -1,24 +1,31 @@
 import Head from "next/head";
 import { FiUser, FiMail, FiLock } from "react-icons/fi";
 import { Form } from "@unform/web";
+import { SubmitHandler, FormHandles } from "@unform/core";
 import * as Yup from "yup";
+import { useRouter } from "next/router";
 //
 import Input from "../../components/Input";
 //
 import styles from "./styles.module.css";
-import { useRef } from "react";
+import React, { useCallback, useRef } from "react";
 
-const SignUp = () => {
-  const formRef = useRef(null);
+interface FormData {
+  user: string;
+  email: string;
+  password: string;
+}
 
-  const handleSubmit = async (data, { reset }) => {
+const SignUp: React.ReactNode = ({ children }) => {
+  const formRef = useRef<FormHandles>(null);
+  const router = useRouter();
+
+  const handleSubmit: SubmitHandler<FormData> = useCallback(async (data) => {
     try {
       formRef.current.setErrors({});
       const schema = Yup.object().shape({
-        email: Yup.string()
-          .email("Digite um email válido")
-          .required("Email obrigatório"),
-        name: Yup.string().required("Nome obrigatório"),
+        email: Yup.string().required("Email obrigatório").email(),
+        user: Yup.string().required("Usuário obrigatório"),
         password: Yup.string().min(6, "Mínimo de seis dígitos"),
       });
 
@@ -27,7 +34,7 @@ const SignUp = () => {
       });
 
       console.log(data);
-      reset();
+      router.push("/");
     } catch (err) {
       const validationErrors = {};
       console.log(err);
@@ -39,8 +46,7 @@ const SignUp = () => {
         formRef.current.setErrors(validationErrors);
       }
     }
-  };
-
+  }, []);
   return (
     <>
       <Head>
@@ -65,7 +71,7 @@ const SignUp = () => {
             className={styles.formContainer}
             onSubmit={handleSubmit}
           >
-            <Input name="name" placeholder="name" icon={FiUser} />
+            <Input name="user" placeholder="user" icon={FiUser} />
             <Input
               name="email"
               placeholder="email"
@@ -79,7 +85,7 @@ const SignUp = () => {
               icon={FiLock}
             />
             <button type="submit" className={styles.formButton}>
-              Sign Up!
+              Enviar
             </button>
           </Form>
         </section>

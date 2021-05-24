@@ -1,4 +1,10 @@
-import React, { useState, useRef, useEffect, InputHTMLAttributes } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  InputHTMLAttributes,
+  useCallback,
+} from "react";
 import { IconBaseProps } from "react-icons";
 import { useField } from "@unform/core";
 //
@@ -35,13 +41,13 @@ const Input: React.FC<InputProps> = ({ icon: Icon, name, ...rest }) => {
     });
   }, [fieldName, registerField]);
 
-  const handleFocus = () => {
+  const handleFocus = useCallback(() => {
     setIsFocus(true);
-  };
+  }, []);
 
-  const handleBlur = () => {
+  const handleBlur = useCallback(() => {
     setIsFocus(false);
-  };
+  }, []);
 
   return (
     <>

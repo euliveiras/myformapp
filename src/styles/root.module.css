@@ -1,0 +1,58 @@
+.mainContent {
+  height: 100vh;
+  width: 100vw;
+
+  background: var(--bgColor) url("/bgImage.png") no-repeat;
+}
+
+.formSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  background-color: whitesmoke;
+
+  border-radius: 4px;
+  width: 50%;
+  height: 60%;
+  margin: 0% 10%;
+}
+
+.formContainer input {
+  width: 80%;
+}
+
+.buttonContainer {
+  width: 100%;
+  height: 20%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formButton {
+  margin: 0 10%;
+  width: 40%;
+  height: 80%;
+
+  transition: color 0.2s;
+}
+
+.formButton:hover {
+  color: var(--bgColor);
+
+  border: 1px solid var(--bgColor);
+  border-radius: 5px;
+  border-color: var(--bgColor);
+}

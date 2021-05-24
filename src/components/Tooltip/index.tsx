@@ -1,6 +1,11 @@
+import React from "react";
 import styles from "./styles.module.css";
 
-const Tooltip = ({ error }) => {
+interface TooltipProps{
+  error: string;
+}
+
+const Tooltip: React.FC<TooltipProps> = ({ error }) => {
   return (
     <div
       className={`${styles.container} ${!!error ? "" : styles.toolTipHidden}`}
